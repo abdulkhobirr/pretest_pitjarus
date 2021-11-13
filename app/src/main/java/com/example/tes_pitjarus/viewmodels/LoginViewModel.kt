@@ -31,7 +31,6 @@ class LoginViewModel(
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe({
-                    Log.d("StoresFromDB", it.toString())
                     if (it.storesData == null) {
                         loginData.value = ResultWrapper.failure("Error", "Username / Password Salah")
                     } else {
