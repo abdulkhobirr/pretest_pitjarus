@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">tes-pitjarus</string>
+    <string name="label_error">Error</string>
+    <string name="error_message">Error Occurred</string>
+    <string name="action_retry">Retry</string>
+</resources>
