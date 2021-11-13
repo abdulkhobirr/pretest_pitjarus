@@ -18,6 +18,10 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
+    buildFeatures {
+        viewBinding = true
+    }
+
     buildTypes {
         debug {
             buildConfigField("String", "BASE_URL", "\"http://dev.pitjarus.co\"")

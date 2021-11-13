@@ -5,6 +5,8 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import com.example.tes_pitjarus.R
+import com.example.tes_pitjarus.databinding.ActivityLoginBinding
+import com.example.tes_pitjarus.databinding.ActivityMainBinding
 import com.example.tes_pitjarus.utils.exhaustive
 import com.example.tes_pitjarus.utils.viewmodel.ResultWrapper
 import com.example.tes_pitjarus.viewmodels.LoginViewModel
@@ -12,29 +14,24 @@ import com.example.tes_pitjarus.viewmodels.MainViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MainActivity : AppCompatActivity() {
-    private val loginViewModel : LoginViewModel by viewModel()
+    private lateinit var binding: ActivityMainBinding
     private val mainViewModel: MainViewModel by viewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        val view = binding.root
+        setContentView(view)
 
-        loginViewModel.login("pitjarus", "admin")
-
-        Handler(Looper.getMainLooper()).postDelayed({
-            mainViewModel.getStores()
-        }, 2000)
+        initActions()
     }
 
-    private fun initObservables(){
-        loginViewModel.loginData.observe(this, {
-            when(it){
-                is ResultWrapper.Default -> TODO()
-                is ResultWrapper.Empty -> TODO()
-                is ResultWrapper.Failure -> TODO()
-                is ResultWrapper.Loading -> TODO()
-                is ResultWrapper.Success -> TODO()
-            }.exhaustive
-        })
+    private fun initActions(){
+        binding.layoutMenu.llMenuKunjungan.setOnClickListener {  }
+        binding.layoutMenu.llMenuTarget.setOnClickListener {  }
+        binding.layoutMenu.llMenuDashboard.setOnClickListener {  }
+        binding.layoutMenu.llMenuHistory.setOnClickListener {  }
+        binding.layoutMenu.llMenuLogout.setOnClickListener {  }
+
     }
 }
