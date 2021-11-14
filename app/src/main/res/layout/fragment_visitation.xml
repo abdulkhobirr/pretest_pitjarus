@@ -66,13 +66,21 @@
         android:textStyle="bold"
         android:textSize="16sp"
         app:layout_constraintTop_toBottomOf="@id/ivMap"/>
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvListKunjungan"
+    <com.kennyc.view.MultiStateView
+        android:id="@+id/msvListKunjungan"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:padding="5dp"
-        tools:listitem="@layout/item_store"
-        app:layout_constraintVertical_bias="0"
+        app:msv_viewState="content"
+        app:msv_loadingView="@layout/default_loading_layout"
+        app:msv_errorView="@layout/default_error_layout"
         app:layout_constraintTop_toBottomOf="@id/tvListKunjungan"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+        app:layout_constraintBottom_toBottomOf="parent">
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvListKunjungan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            tools:listitem="@layout/item_store"
+            app:layout_constraintVertical_bias="0" />
+    </com.kennyc.view.MultiStateView>
 </androidx.constraintlayout.widget.ConstraintLayout>
