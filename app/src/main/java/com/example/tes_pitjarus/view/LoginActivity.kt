@@ -30,6 +30,7 @@ class LoginActivity : AppCompatActivity() {
     private fun initAction(){
         binding.btnLogin.setOnClickListener {
             when{
+                binding.edtUsername.text.isNullOrEmpty() && binding.edtPassword.text.isNullOrEmpty() -> Toast.makeText(this, "Username dan Password harus diisi", Toast.LENGTH_SHORT).show()
                 binding.edtUsername.text.isNullOrEmpty() -> Toast.makeText(this, "Username harus diisi", Toast.LENGTH_SHORT).show()
                 binding.edtPassword.text.isNullOrEmpty() -> Toast.makeText(this, "Password harus diisi", Toast.LENGTH_SHORT).show()
                 else -> {
