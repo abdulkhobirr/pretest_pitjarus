@@ -8,6 +8,7 @@ import com.example.tes_pitjarus.data.stores.local.entity.Stores
 import com.example.tes_pitjarus.utils.viewmodel.ResultWrapper
 import com.example.tes_pitjarus.utils.viewmodel.addTo
 import com.example.tes_pitjarus.utils.viewmodel.genericErrorHandler
+import io.reactivex.Completable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
@@ -17,6 +18,7 @@ class MainViewModel(private val repository: StoresRepository,
 ): ViewModel() {
 
     val storeData = MutableLiveData<ResultWrapper<List<Stores>>>()
+    val clearData = MutableLiveData<ResultWrapper<Boolean>>()
 
     fun getStores(){
         repository.getStores()
@@ -29,6 +31,14 @@ class MainViewModel(private val repository: StoresRepository,
                 }, {
                     genericErrorHandler(it, storeData)
                 }).addTo(disposable)
+    }
+
+    fun clearTable(){
+        Completable.fromAction{repository.clearTable()}
+            .subscribeOn(Schedulers.io())
+            .subscribe {
+                clearData.postValue(ResultWrapper.success(true))
+            }.addTo(disposable)
     }
 
     override fun onCleared() {

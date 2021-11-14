@@ -8,17 +8,30 @@ import com.example.tes_pitjarus.R
 import com.example.tes_pitjarus.databinding.ActivityLoginBinding
 import com.example.tes_pitjarus.utils.exhaustive
 import com.example.tes_pitjarus.utils.gone
+import com.example.tes_pitjarus.utils.pref.PrefManager
+import com.example.tes_pitjarus.utils.pref.UserPreferenceKey
 import com.example.tes_pitjarus.utils.viewmodel.ResultWrapper
 import com.example.tes_pitjarus.utils.visible
 import com.example.tes_pitjarus.viewmodels.LoginViewModel
+import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class LoginActivity : AppCompatActivity() {
     private lateinit var binding: ActivityLoginBinding
     private val loginViewModel: LoginViewModel by viewModel()
+    private val pref: PrefManager by inject()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        if (pref.getBoolean(UserPreferenceKey.IS_LOGGED_IN)){
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+        } else {
+            initUI()
+        }
+    }
+
+    private fun initUI(){
         binding = ActivityLoginBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
@@ -52,6 +65,7 @@ class LoginActivity : AppCompatActivity() {
                 }
                 is ResultWrapper.Success -> {
                     binding.progressLogin.gone()
+                    pref.saveBoolean(UserPreferenceKey.IS_LOGGED_IN, true)
                     val intent = Intent(this, MainActivity::class.java)
                     startActivity(intent)
                 }
