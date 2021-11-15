@@ -58,13 +58,19 @@ class LoginActivity : AppCompatActivity() {
             when(it) {
                 is ResultWrapper.Failure -> {
                     binding.progressLogin.gone()
+                    binding.btnLogin.text = "Login"
+                    binding.btnLogin.isClickable = true
                     Toast.makeText(this, it.message, Toast.LENGTH_SHORT).show()
                 }
                 is ResultWrapper.Loading -> {
                     binding.progressLogin.visible()
+                    binding.btnLogin.text = ""
+                    binding.btnLogin.isClickable = false
                 }
                 is ResultWrapper.Success -> {
                     binding.progressLogin.gone()
+                    binding.btnLogin.text = "Success"
+                    binding.btnLogin.isClickable = true
                     pref.saveBoolean(UserPreferenceKey.IS_LOGGED_IN, true)
                     val intent = Intent(this, MainActivity::class.java)
                     startActivity(intent)

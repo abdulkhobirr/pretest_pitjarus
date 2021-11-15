@@ -14,9 +14,9 @@
         android:elevation="10dp"
         android:background="?selectableItemBackgroundBorderless"
         app:srcCompat="@drawable/ic_baseline_arrow_back_24"
-        android:tint="@color/white"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:tint="@color/white" />
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/labelListStore"
         android:layout_width="wrap_content"
@@ -96,7 +96,7 @@
             app:msv_viewState="content">
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="match_parent">
                 <ImageView
                     android:id="@+id/iconLocation"
                     android:layout_width="wrap_content"
@@ -206,10 +206,12 @@
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:layout_marginTop="15dp"
-                    android:src="@drawable/ic_kunjungan"
+                    android:padding="5dp"
+                    android:src="@drawable/ic_baseline_assignment_24"
                     app:layout_constraintTop_toBottomOf="@id/tvEmerchant"
                     app:layout_constraintStart_toStartOf="@id/iconLocation"
-                    app:layout_constraintEnd_toEndOf="@id/iconLocation"/>
+                    app:layout_constraintEnd_toEndOf="@id/iconLocation"
+                    app:tint="@color/orange" />
                 <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/tvLabelLastVisit"
                     android:layout_width="wrap_content"

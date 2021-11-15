@@ -9,6 +9,7 @@ import androidx.navigation.fragment.findNavController
 import com.example.tes_pitjarus.R
 import com.example.tes_pitjarus.databinding.FragmentStoreDetailBinding
 import com.example.tes_pitjarus.viewmodels.MainViewModel
+import com.google.android.material.transition.MaterialFadeThrough
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
 class StoreDetailFragment : Fragment() {
@@ -19,6 +20,9 @@ class StoreDetailFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        enterTransition = MaterialFadeThrough()
+        exitTransition = MaterialFadeThrough()
     }
 
     override fun onCreateView(

@@ -27,6 +27,7 @@ class LoginViewModel(
     val loginData = MutableLiveData<ResultWrapper<PostLoginResponse>>()
 
     fun login(username: String, password: String){
+        loginData.value = ResultWrapper.loading()
         repository.postLogin(PostLoginBody(username, password))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())

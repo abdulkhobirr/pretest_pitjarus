@@ -13,6 +13,7 @@ import com.example.tes_pitjarus.utils.pref.PrefManager
 import com.example.tes_pitjarus.utils.viewmodel.ResultWrapper
 import com.example.tes_pitjarus.view.LoginActivity
 import com.example.tes_pitjarus.viewmodels.MainViewModel
+import com.google.android.material.transition.MaterialFadeThrough
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -25,7 +26,6 @@ class MainFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
     }
 
     override fun onCreateView(

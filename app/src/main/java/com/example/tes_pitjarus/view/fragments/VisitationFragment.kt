@@ -14,6 +14,7 @@ import com.example.tes_pitjarus.utils.*
 import com.example.tes_pitjarus.utils.viewmodel.ResultWrapper
 import com.example.tes_pitjarus.view.adapter.StoresAdapter
 import com.example.tes_pitjarus.viewmodels.MainViewModel
+import com.google.android.material.transition.MaterialFadeThrough
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -26,6 +27,9 @@ class VisitationFragment : Fragment(), StoresAdapter.OnStoreClicked {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        enterTransition = MaterialFadeThrough()
+        exitTransition = MaterialFadeThrough()
     }
 
     override fun onCreateView(
