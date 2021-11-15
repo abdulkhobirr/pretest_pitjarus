@@ -1,6 +1,5 @@
 package com.example.tes_pitjarus.viewmodels
 
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.tes_pitjarus.data.login.LoginRepository
@@ -10,19 +9,16 @@ import com.example.tes_pitjarus.data.stores.StoresRepository
 import com.example.tes_pitjarus.utils.viewmodel.ResultWrapper
 import com.example.tes_pitjarus.utils.viewmodel.addTo
 import com.example.tes_pitjarus.utils.viewmodel.genericErrorHandler
+import io.reactivex.Completable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
-import kotlinx.coroutines.*
-import kotlin.coroutines.CoroutineContext
 
 class LoginViewModel(
         private val repository: LoginRepository,
         private val db: StoresRepository,
         private val disposable: CompositeDisposable
-) : ViewModel(), CoroutineScope {
-    override val coroutineContext: CoroutineContext
-        get() = Job() + Dispatchers.Main
+): ViewModel() {
 
     val loginData = MutableLiveData<ResultWrapper<PostLoginResponse>>()
 
@@ -43,13 +39,13 @@ class LoginViewModel(
     }
 
     private fun insertStoresData(response: PostLoginResponse) {
-        launch {
-            val data = withContext(Dispatchers.IO) {
-                db.addStores(response.toStores())
+        Completable.fromAction {db.addStores(response.toStores())}
+            .subscribeOn(Schedulers.io())
+            .subscribe{
+                loginData.postValue(ResultWrapper.success(response))
             }
-            loginData.value = ResultWrapper.success(response)
+            .addTo(disposable)
         }
-    }
 
     override fun onCleared() {
         if (!disposable.isDisposed) disposable.dispose()
