@@ -19,6 +19,12 @@ class MainViewModel(private val repository: StoresRepository,
 
     val storeData = MutableLiveData<ResultWrapper<List<Stores>>>()
     val clearData = MutableLiveData<ResultWrapper<Boolean>>()
+    val selectedStore = MutableLiveData<Stores>()
+
+    init {
+        storeData.value = ResultWrapper.default()
+        clearData.value = ResultWrapper.default()
+    }
 
     fun getStores(){
         repository.getStores()
@@ -39,6 +45,10 @@ class MainViewModel(private val repository: StoresRepository,
             .subscribe {
                 clearData.postValue(ResultWrapper.success(true))
             }.addTo(disposable)
+    }
+
+    fun setSelectedStore(data: Stores){
+        selectedStore.value = data
     }
 
     override fun onCleared() {

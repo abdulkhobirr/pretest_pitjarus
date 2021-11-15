@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.tes_pitjarus.data.stores.local.entity.Stores
 import com.example.tes_pitjarus.databinding.FragmentVisitationBinding
@@ -13,13 +14,14 @@ import com.example.tes_pitjarus.utils.*
 import com.example.tes_pitjarus.utils.viewmodel.ResultWrapper
 import com.example.tes_pitjarus.view.adapter.StoresAdapter
 import com.example.tes_pitjarus.viewmodels.MainViewModel
+import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class VisitationFragment : Fragment(), StoresAdapter.OnStoreClicked {
     private var _binding: FragmentVisitationBinding?=null
     private val binding get() = _binding!!
 
-    private val mainViewModel: MainViewModel by viewModel()
+    private val mainViewModel: MainViewModel by sharedViewModel()
     private lateinit var storeAdapter: StoresAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -59,7 +61,9 @@ class VisitationFragment : Fragment(), StoresAdapter.OnStoreClicked {
     }
 
     override fun onStoreClicked(data: Stores) {
-        Toast.makeText(requireContext(), data.store_name, Toast.LENGTH_SHORT).show()
+        mainViewModel.setSelectedStore(data)
+        val direction = VisitationFragmentDirections.actionVisitationFragmentToStoreDetailFragment()
+        findNavController().navigate(direction)
     }
 
     private fun initObservable(){

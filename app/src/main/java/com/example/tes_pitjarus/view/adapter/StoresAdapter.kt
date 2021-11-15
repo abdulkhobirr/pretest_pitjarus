@@ -46,7 +46,6 @@ class StoresAdapter (
         fun bindStore(data: Stores){
             binding.apply {
                 tvNamaToko.text = data.store_name
-                tvCluster.text = data.dc_name
                 mcvStore.setOnClickListener {
                     listener.onStoreClicked(data)
                 }

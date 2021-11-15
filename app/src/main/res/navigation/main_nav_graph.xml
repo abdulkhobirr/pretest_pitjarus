@@ -27,5 +27,19 @@
         android:id="@+id/storeDetailFragment"
         android:name="com.example.tes_pitjarus.view.fragments.StoreDetailFragment"
         android:label="fragment_store_detail"
-        tools:layout="@layout/fragment_store_detail" />
+        tools:layout="@layout/fragment_store_detail" >
+        <action
+            android:id="@+id/action_storeDetailFragment_to_visitDetailFragment"
+            app:destination="@id/visitDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/visitDetailFragment"
+        android:name="com.example.tes_pitjarus.view.fragments.VisitDetailFragment"
+        android:label="fragment_visit_detail"
+        tools:layout="@layout/fragment_visit_detail" >
+        <action
+            android:id="@+id/action_visitDetailFragment_to_visitationFragment"
+            app:destination="@id/visitationFragment"
+            app:popUpTo="@id/mainFragment"/>
+    </fragment>
 </navigation>
