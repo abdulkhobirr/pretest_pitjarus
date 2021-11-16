@@ -48,24 +48,19 @@ class VisitDetailFragment : Fragment() {
             tvStoreId.text = data?.store_id
             tvStoreName.text = data?.store_name
             layoutMenu.iconKunjungan.apply {
-                setImageResource(R.drawable.ic_baseline_info_24)
-                setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.blue))
+                setImageResource(R.drawable.ic_info)
             }
             layoutMenu.iconTarget.apply {
-                setImageResource(R.drawable.ic_baseline_local_drink_24)
-                setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.orange))
+                setImageResource(R.drawable.ic_product_check)
             }
             layoutMenu.iconDashboard.apply {
-                setImageResource(R.drawable.ic_baseline_shopping_cart_24)
-                setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.blue))
+                setImageResource(R.drawable.ic_shopping_cart)
             }
             layoutMenu.iconHistory.apply {
-                setImageResource(R.drawable.ic_baseline_local_drink_24)
-                setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.red))
+                setImageResource(R.drawable.ic_oos)
             }
             layoutMenu.iconLogout.apply {
-                setImageResource(R.drawable.ic_baseline_show_chart_24)
-                setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.blue))
+                setImageResource(R.drawable.ic_store_investment)
             }
             layoutMenu.tvKunjungan.text = "Information"
             layoutMenu.tvTarget.text = "Product\nCheck"
