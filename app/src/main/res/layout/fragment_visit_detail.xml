@@ -54,9 +54,15 @@
             android:id="@+id/tvTop"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Lorem ipsum dolor sit amet"
+            android:text="untuk support yang luar biasa di masa-masa covid-19 seperti ini. text text text text text"
             android:textColor="@color/blue"
             android:padding="4dp"
+            android:ellipsize="marquee"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:marqueeRepeatLimit="marquee_forever"
+            android:scrollHorizontally="true"
+            android:singleLine="true"
             app:layout_constraintTop_toBottomOf="@id/divider"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 

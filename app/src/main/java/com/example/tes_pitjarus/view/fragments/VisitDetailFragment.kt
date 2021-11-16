@@ -5,10 +5,17 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.annotation.ColorInt
+import androidx.annotation.ColorRes
+import androidx.annotation.DrawableRes
 import androidx.core.content.ContextCompat
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.tes_pitjarus.R
 import com.example.tes_pitjarus.databinding.FragmentVisitDetailBinding
+import com.example.tes_pitjarus.view.adapter.DashboardStoreAdapter
+import com.example.tes_pitjarus.view.adapter.StoresAdapter
 import com.example.tes_pitjarus.viewmodels.MainViewModel
 import com.google.android.material.transition.MaterialFadeThrough
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
@@ -18,6 +25,7 @@ class VisitDetailFragment : Fragment() {
     private val binding get() = _binding!!
 
     private val mainViewModel: MainViewModel by sharedViewModel()
+    private var dashboardAdapter = DashboardStoreAdapter()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,14 +47,38 @@ class VisitDetailFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         initUI()
+        initRV()
         initActions()
+    }
+
+    private fun initRV(){
+        binding.rvDashboardStore.apply {
+            layoutManager =
+                GridLayoutManager(
+                    context,
+                    1,
+                    GridLayoutManager.HORIZONTAL,
+                    false
+                )
+            setHasFixedSize(true)
+            adapter = dashboardAdapter
+        }
+
+        val dummyData = listOf(
+            DashboardStore("OSA", "September 2020", "50%", 40, 20, R.color.darkYellow, R.drawable.ic_bottle_yellow),
+            DashboardStore("NPD", "September 2020", "80%", 100, 80, R.color.teal, R.drawable.ic_bottle_teal),
+            DashboardStore("DNP", "September 2020", "90%", 1000, 990, R.color.darkBlue, R.drawable.ic_store_investment)
+            )
+
+        dashboardAdapter.setDashboardData(dummyData)
     }
 
     private fun initUI(){
         binding.apply {
             val data = mainViewModel.selectedStore.value
-            tvStoreId.text = data?.store_id
+            tvStoreId.text = String.format("ST${data?.store_code}${data?.store_id}")
             tvStoreName.text = data?.store_name
+            tvTop.isSelected = true
             layoutMenu.iconKunjungan.apply {
                 setImageResource(R.drawable.ic_info)
             }
@@ -82,3 +114,13 @@ class VisitDetailFragment : Fragment() {
         _binding = null
     }
 }
+
+data class DashboardStore(
+    val name: String,
+    val date: String,
+    val percentage: String,
+    val target: Int,
+    val pencapaian: Int,
+    @ColorRes val color: Int,
+    @DrawableRes val drawable: Int ?=null
+)

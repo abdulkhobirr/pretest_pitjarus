@@ -15,6 +15,7 @@ data class PostLoginResponse(
                     Stores(
                             index,
                             it.store_id,
+                            it.store_code,
                             it.store_name,
                             it.address,
                             it.dc_id,
@@ -40,6 +41,7 @@ data class PostLoginResponse(
 
 data class StoresData(
     @SerializedName("store_id") val store_id: String,
+    @SerializedName("store_code") val store_code: String,
     @SerializedName("store_name") val store_name: String,
     @SerializedName("address") val address: String,
     @SerializedName("dc_id") val dc_id: String,

@@ -11,6 +11,7 @@ data class Stores(
     @PrimaryKey(autoGenerate = true)
     val id: Int=0,
     val store_id: String,
+    val store_code: String,
     val store_name: String,
     val address: String,
     val dc_id: String,

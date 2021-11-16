@@ -26,6 +26,8 @@
             android:drawableTint="@color/blue"
             android:drawableStart="@drawable/ic_baseline_account_circle_24"
             android:textColor="@color/black"
+            android:inputType="text"
+            android:maxLines="1"
             android:hint="Username"
             android:textColorHint="@color/darkGrey"
             />
@@ -40,7 +42,9 @@
             android:drawableTint="@color/blue"
             android:drawableStart="@drawable/ic_baseline_lock_24"
             android:textColor="@color/black"
+            android:maxLines="1"
             android:hint="Password"
+            android:inputType="textPassword"
             android:textColorHint="@color/darkGrey"
             />
     </LinearLayout>
