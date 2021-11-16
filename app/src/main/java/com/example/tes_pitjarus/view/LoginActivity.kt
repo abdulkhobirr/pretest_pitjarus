@@ -51,6 +51,7 @@ class LoginActivity : AppCompatActivity() {
                 }
             }
         }
+        binding.btnCheckUpdate.setOnClickListener {  }
     }
 
     private fun initObservable(){

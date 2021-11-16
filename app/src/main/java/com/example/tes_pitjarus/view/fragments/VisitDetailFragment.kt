@@ -103,9 +103,17 @@ class VisitDetailFragment : Fragment() {
     }
 
     private fun initActions(){
-        binding.btnFinish.setOnClickListener {
-            val direction = VisitDetailFragmentDirections.actionVisitDetailFragmentToVisitationFragment()
-            findNavController().navigate(direction)
+        binding.apply {
+            btnFinish.setOnClickListener {
+                val direction = VisitDetailFragmentDirections.actionVisitDetailFragmentToVisitationFragment()
+                findNavController().navigate(direction)
+            }
+            btnBook.setOnClickListener {  }
+            layoutMenu.llMenuKunjungan.setOnClickListener {  }
+            layoutMenu.llMenuTarget.setOnClickListener {  }
+            layoutMenu.llMenuDashboard.setOnClickListener {  }
+            layoutMenu.llMenuHistory.setOnClickListener {  }
+            layoutMenu.llMenuLogout.setOnClickListener {  }
         }
     }
 

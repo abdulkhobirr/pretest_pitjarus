@@ -34,11 +34,11 @@
         app:layout_constraintBottom_toBottomOf="@id/btnBack"/>
     <ImageView
         android:id="@+id/btnBook"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="10dp"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:padding="4dp"
         android:background="?selectableItemBackgroundBorderless"
-        app:srcCompat="@drawable/ic_baseline_autorenew_24"
+        app:srcCompat="@drawable/ic_book"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
     <com.google.android.material.textfield.TextInputEditText

@@ -111,11 +111,12 @@
             app:layout_constraintTop_toBottomOf="@id/tvTitleVisit"
             app:layout_constraintStart_toEndOf="@id/clActualScore"
             app:layout_constraintEnd_toEndOf="parent">
-            <ImageView
+            <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/iconPercentage"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:tint="@color/yellow"
+                android:padding="3dp"
+                app:civ_circle_background_color="@color/yellow"
                 android:src="@drawable/ic_baseline_show_chart_24"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"/>

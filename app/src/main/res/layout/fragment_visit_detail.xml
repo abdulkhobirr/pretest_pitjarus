@@ -33,11 +33,13 @@
             app:layout_constraintTop_toBottomOf="@id/labelMainMenu"
             app:layout_constraintStart_toStartOf="@id/labelMainMenu" />
         <ImageView
+            android:id="@+id/btnBook"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:elevation="10dp"
             android:layout_marginEnd="10dp"
             android:src="@drawable/ic_book"
+            android:background="?selectableItemBackground"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@id/labelMainMenu"
             app:layout_constraintBottom_toBottomOf="@id/labelMainMenu" />
@@ -172,7 +174,7 @@
             android:padding="10dp"
             android:orientation="horizontal"
             app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-            tools:listitem="@layout/item_store"
+            tools:listitem="@layout/item_dashboard_store"
             app:layout_constraintTop_toBottomOf="@id/labelPerfectScore"
             app:layout_constraintBottom_toTopOf="@id/btnFinish"
             app:layout_constraintStart_toStartOf="parent"

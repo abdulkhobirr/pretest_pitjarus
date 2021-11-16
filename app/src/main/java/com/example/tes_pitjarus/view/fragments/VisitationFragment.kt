@@ -47,6 +47,18 @@ class VisitationFragment : Fragment(), StoresAdapter.OnStoreClicked {
         initRV()
         initObservable()
         mainViewModel.getStores()
+        initActions()
+    }
+
+    private fun initActions(){
+        binding.apply {
+            btnBack.setOnClickListener {
+                findNavController().navigateUp()
+            }
+            btnBook.setOnClickListener {
+
+            }
+        }
     }
 
     private fun initRV(){

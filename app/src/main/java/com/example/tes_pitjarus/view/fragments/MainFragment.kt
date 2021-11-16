@@ -52,15 +52,19 @@ class MainFragment : Fragment() {
                 }
             })
 
-        binding.layoutMenu.llMenuKunjungan.setOnClickListener {
-            val direction = MainFragmentDirections.actionMainFragmentToVisitationFragment()
-            findNavController().navigate(direction)
-        }
-        binding.layoutMenu.llMenuTarget.setOnClickListener {  }
-        binding.layoutMenu.llMenuDashboard.setOnClickListener {  }
-        binding.layoutMenu.llMenuHistory.setOnClickListener {  }
-        binding.layoutMenu.llMenuLogout.setOnClickListener {
-            mainViewModel.clearTable()
+        binding.apply {
+            ivRefresh.setOnClickListener {  }
+            layoutMenu.llMenuTarget.setOnClickListener {  }
+            layoutMenu.llMenuDashboard.setOnClickListener {  }
+            layoutMenu.llMenuHistory.setOnClickListener {  }
+            layoutMenu.llMenuLogout.setOnClickListener {
+                mainViewModel.clearTable()
+            }
+
+            binding.layoutMenu.llMenuKunjungan.setOnClickListener {
+                val direction = MainFragmentDirections.actionMainFragmentToVisitationFragment()
+                findNavController().navigate(direction)
+            }
         }
     }
 

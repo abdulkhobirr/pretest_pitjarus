@@ -51,6 +51,12 @@ class StoreDetailFragment : Fragment() {
 
     private fun initActions(){
         binding.apply {
+            btnCamera.setOnClickListener {  }
+            btnLocation.setOnClickListener {  }
+            btnNavigation.setOnClickListener {  }
+            btnBack.setOnClickListener {
+                findNavController().navigateUp()
+            }
             btnNoVisit.setOnClickListener {
 
             }
