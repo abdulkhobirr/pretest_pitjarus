@@ -27,8 +27,9 @@
     <com.google.android.material.textview.MaterialTextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="List Store"
+        android:text="userA"
         android:textSize="11sp"
+        app:layout_constraintVertical_bias="0"
         app:layout_constraintTop_toBottomOf="@id/labelListStore"
         app:layout_constraintStart_toStartOf="@id/labelListStore"
         app:layout_constraintBottom_toBottomOf="@id/btnBack"/>

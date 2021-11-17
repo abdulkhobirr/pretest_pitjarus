@@ -71,6 +71,7 @@ class VisitationFragment : Fragment(), StoresAdapter.OnStoreClicked {
                     LinearLayoutManager.VERTICAL,
                     false
                 )
+            isMotionEventSplittingEnabled = false
             setHasFixedSize(true)
             adapter = storeAdapter
         }
